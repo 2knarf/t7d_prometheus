@@ -1,2 +1,2 @@
-# T7d Promeuthus
+# T7d Prometheus
 
