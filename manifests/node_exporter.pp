@@ -46,7 +46,7 @@ class t7d_prometheus::node_exporter {
   }
 
   @@concat::fragment { "node_exporter_service-${::hostname}":
-    target  => '/tmp/exporttest',
+    target  => "/tmp/exporttest-${::hostname}",
     content => "server ${::hostname} ${::ipaddress}",
     tag     => 'node_exporter_service',
   }
