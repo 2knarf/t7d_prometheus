@@ -45,4 +45,10 @@ class t7d_prometheus::node_exporter {
       refreshonly => true;
   }
 
+  @@concat::fragment { "node_exporter_service-${::hostname}":
+    target  => '/tmp/exporttest',
+    content => "server ${::hostname} ${::ipaddress}",
+    tag     => 'node_exporter_service',
+  }
+
 }
