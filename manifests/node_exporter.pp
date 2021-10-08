@@ -13,7 +13,7 @@ class t7d_prometheus::node_exporter {
   user{'node_exporter':
     ensure     => present,
     comment    => 'Node exporter',
-    shell      => '/usr/bin/false',
+    shell      => '/bin/false',
     managehome => false
   }
   file {'/etc/systemd/system/node_exporter.service':
