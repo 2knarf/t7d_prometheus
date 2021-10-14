@@ -25,9 +25,7 @@ pages:
     # Puppet lint tests.
 lint:
   stage: checks
-  before_script:                # You can run multiple scripts using an
-    - "bin/gitlab_before.sh"    # array like this
-  script: "bin/puppet_lint.sh"
+  script: "/usr/local/bin/puppet-lint"
   cache:
     untracked: true
     paths:
