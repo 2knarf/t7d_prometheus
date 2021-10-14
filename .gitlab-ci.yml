@@ -23,7 +23,7 @@ pages:
     - public
     expire_in: '30 day'
     # Puppet lint tests.
-lint:
+puppet-lint:
   stage: checks
   script: "/usr/local/bin/puppet-lint"
   cache:
