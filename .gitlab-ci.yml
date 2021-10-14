@@ -1,6 +1,6 @@
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   TERM: vt100
-job:
+lint:
   script: 
     - true puppet-lint manifests/*.pp
