@@ -1,3 +1,15 @@
+stages:
+  - checks
+  - version_check
+  - specs
+  - diffs
+  - sitedoc
+  - integration
+  - live_runs
+  - merge_request
+  - promote
+  - rollout
+  - postcheck
 pages:
   stage: sitedoc
   script:
@@ -10,3 +22,22 @@ pages:
     paths:
     - public
     expire_in: '30 day'
+    # Puppet lint tests.
+lint:
+  stage: checks
+  before_script:                # You can run multiple scripts using an
+    - "bin/gitlab_before.sh"    # array like this
+  script: "bin/puppet_lint.sh"
+  cache:
+    untracked: true
+    paths:
+    - modules/
+  tags:
+    - test_puppet
+  except:
+    - testing
+    - production
+  only:
+    - branches
+  allow_failure: true   # The job can fail without blocking the pipeline
+
