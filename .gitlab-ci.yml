@@ -1,24 +1,6 @@
-stages:
-  - checks
-  - version_check
-  - specs
-  - diffs
-  - sitedoc
-  - integration
-  - live_runs
-  - merge_request
-  - promote
-  - rollout
-  - postcheck
-pages:
-  stage: sitedoc
-  script:
-    - rm -rf doc public .yardoc
-    - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
-    - mv doc public
-  tags:
-    - docker
-  artifacts:
-    paths:
-    - public
-    expire_in: '30 day'
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  TERM: vt100
+job:
+  script: 
+    - true puppet-lint manifests/*.pp
