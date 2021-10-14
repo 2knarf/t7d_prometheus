@@ -22,20 +22,3 @@ pages:
     paths:
     - public
     expire_in: '30 day'
-    # Puppet lint tests.
-puppet-lint:
-  stage: checks
-  script: "/usr/local/bin/puppet-lint"
-  cache:
-    untracked: true
-    paths:
-    - modules/
-  tags:
-    - test_puppet
-  except:
-    - testing
-    - production
-  only:
-    - branches
-  allow_failure: true   # The job can fail without blocking the pipeline
-
