@@ -24,26 +24,21 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2') {
 
   }
 
-#sudo systemctl daemon-reload
+  # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
   exec {
     'refresh_systemd':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/node_exporter.service'],
-      refreshonly => true;
-  }
-#sudo systemctl start node_exporter
-  exec {
-    'start_node_exporter_systemd':
-      command     => '/bin/systemctl start node_exporter',
       require     => File['/etc/systemd/system/node_exporter.service'],
       refreshonly => true;
   }
-#sudo systemctl enable node_exporter
-  exec {
-    'enable_node_exporter_systemd':
-      command     => '/bin/systemctl enable node_exporter',
-      require     => File['/etc/systemd/system/node_exporter.service'],
-      refreshonly => true;
+
+  # Start and enable node_exporter with builtin service type from Puppet
+  service{ 'node_exporter':
+    ensure    => running,
+    enable    => true,
+    require   => exec['refresh_systemd'],
+    hasstatus => true,
   }
 
   @@concat::fragment { "node_exporter_service-${::hostname}":
