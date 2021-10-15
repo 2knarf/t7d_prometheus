@@ -1,0 +1,2 @@
+manifests/server.pp ed8aa14b84a53bbc8621486531bdf877b09c811b
+manifests/node_exporter.pp 33ffb713e09176c93354ee93eac97a47e4fc6acc
