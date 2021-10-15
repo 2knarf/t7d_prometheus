@@ -1,4 +1,5 @@
-#Server setup for Prometheus
+# @summary
+#   Server setup for Prometheus
 class t7d_prometheus::server {
   concat { '/tmp/node-targets.yaml':
     ensure_newline => true,
@@ -10,7 +11,7 @@ class t7d_prometheus::server {
   # We need this to make sure it will become a valid YAML file, so this needs to be at the beginning of the file.
   # This also where we could add custom labels
   concat::fragment { 'node-targets-header':
-    target  => $job_targets_file,
+    target  => "${job_targets_file}",
     content => "---\n- labels:\n  environment: production\n- targets:\n",
     order   => 0,
   }
