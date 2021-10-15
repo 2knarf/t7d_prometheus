@@ -37,7 +37,7 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2') {
   service{ 'node_exporter':
     ensure    => running,
     enable    => true,
-    require   => exec['refresh_systemd'],
+    require   => Exec['refresh_systemd'],
     hasstatus => true,
   }
 
