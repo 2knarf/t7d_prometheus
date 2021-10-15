@@ -15,6 +15,14 @@
 
 Class for setting up node_exporter
 
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::node_exporter
+```
+
 #### Parameters
 
 The following parameters are available in the `t7d_prometheus::node_exporter` class:

@@ -2,6 +2,9 @@
 #  Class for setting up node_exporter
 # @param version
 #   Which version of node_exporter should be used
+# @example
+#   include t7d_prometheus::node_exporter
+#
 class t7d_prometheus::node_exporter (String $version = '1.1.2') {
 
   file {'/usr/local/bin/node_exporter':
