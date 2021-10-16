@@ -11,9 +11,8 @@ lint:
 sitedoc:
   stage: sitedoc
   script:
-    - apt add gcc make
     - rm -rf doc public .yardoc
-    - apk add ruby ruby-dev
+    - apk add ruby ruby-dev g++ make
     - gem install puppet
     - gem install json
     - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
