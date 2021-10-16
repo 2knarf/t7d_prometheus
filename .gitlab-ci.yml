@@ -4,3 +4,17 @@ variables:
 lint:
   script: 
     - true puppet-lint manifests/*.pp
+pages:
+  stage: sitedoc
+  script:
+    - rm -rf doc public .yardoc
+    - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
+    - mv doc public
+  tags:
+    - deploy_puppet
+  artifacts:
+    paths:
+    - public
+    expire_in: '30 day'
+  only:
+    - production
