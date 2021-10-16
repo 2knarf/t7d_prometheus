@@ -15,7 +15,7 @@ sitedoc:
     - apk add ruby ruby-dev g++ make
     - gem install puppet
     - gem install json
-    - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
+    - puppet strings generate
     - mv doc public
   artifacts:
     paths:
