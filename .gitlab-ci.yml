@@ -8,7 +8,7 @@ lint:
   stage: lint
   script:
     - true puppet-lint manifests/*.pp
-pages:
+sitedoc:
   stage: sitedoc
   script:
     - rm -rf doc public .yardoc
