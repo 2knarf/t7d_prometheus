@@ -15,6 +15,7 @@ sitedoc:
     - apk add ruby ruby-dev g++ make
     - gem install puppet
     - gem install json
+    - gem install puppet-strings
     - puppet strings generate
     - mv doc public
   artifacts:
