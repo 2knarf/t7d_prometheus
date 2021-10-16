@@ -12,7 +12,7 @@ sitedoc:
   stage: sitedoc
   script:
     - rm -rf doc public .yardoc
-    - gem install puppet
+    - apt-get install puppet -y
     - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
     - mv doc public
   artifacts:
