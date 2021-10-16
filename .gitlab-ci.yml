@@ -1,5 +1,6 @@
 stages:
   - sitedoc
+  - lint
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   TERM: vt100
