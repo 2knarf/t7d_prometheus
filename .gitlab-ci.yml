@@ -1,3 +1,5 @@
+stages:
+  - sitedoc
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   TERM: vt100
