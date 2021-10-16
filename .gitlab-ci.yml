@@ -16,6 +16,11 @@ sitedoc:
     - gem install puppet
     - gem install json
     - gem install puppet-strings
+    - gem install puppet-lint
+    - gem install puppet-spec
+    - gem install puppet-resource_api
+    - gem install puppet-syntax
+    - gem install puppetlabs_spec_helper
     - puppet strings generate
     - mv doc public
   artifacts:
