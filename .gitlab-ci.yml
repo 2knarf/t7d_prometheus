@@ -11,6 +11,7 @@ lint:
 sitedoc:
   stage: sitedoc
   script:
+    - apt add gcc make
     - rm -rf doc public .yardoc
     - apk add ruby ruby-dev
     - gem install puppet
