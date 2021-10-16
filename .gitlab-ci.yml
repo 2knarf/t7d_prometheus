@@ -14,6 +14,7 @@ sitedoc:
     - rm -rf doc public .yardoc
     - apk add ruby
     - gem install puppet
+    - gem install json
     - puppet strings generate site/\*\*/manifests/\*.pp site/\*\*/manifests/\*\*/\*.pp site/\*\*/manifests/\*\*/\*\*/\*.pp site/\*\*/functions/\*\*/\*.pp manifests/\*.pp
     - mv doc public
   artifacts:
