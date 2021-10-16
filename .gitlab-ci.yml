@@ -21,4 +21,4 @@ sitedoc:
     - public
     expire_in: '30 day'
   only:
-    - production
+    - master
