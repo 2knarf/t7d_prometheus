@@ -5,7 +5,8 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   TERM: vt100
 lint:
-  script: 
+  stage: lint
+  script:
     - true puppet-lint manifests/*.pp
 pages:
   stage: sitedoc
