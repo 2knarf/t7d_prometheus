@@ -12,7 +12,7 @@ sitedoc:
   stage: sitedoc
   script:
     - rm -rf doc public .yardoc
-    - apk add ruby ruby-dev g++ make
+    - apk add ruby ruby-dev g++ make shadow less bash
     - gem install puppet
     - gem install json
     - gem install puppet-strings
@@ -21,7 +21,6 @@ sitedoc:
     - gem install puppet-resource_api
     - gem install puppet-syntax
     - gem install puppetlabs_spec_helper
-    - gem install simpleconv
     - puppet strings generate
     - mv doc public
   artifacts:
