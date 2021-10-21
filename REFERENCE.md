@@ -23,6 +23,15 @@ Class for setting up node_exporter and exporting configuration to PuppetDB
 include t7d_prometheus::node_exporter
 ```
 
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::node_exporter
+```
+
 #### Parameters
 
 The following parameters are available in the `t7d_prometheus::node_exporter` class:

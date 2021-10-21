@@ -4,6 +4,11 @@
 #   Which version of node_exporter should be used
 # @example
 #   include t7d_prometheus::node_exporter
+# @example
+#   File: data/nodes/puppetdevclient03.teknograd.no.yaml
+#   ---
+#   classes:
+#    - t7d_prometheus::node_exporter
 #
 class t7d_prometheus::node_exporter (String $version = '1.1.2') {
 
