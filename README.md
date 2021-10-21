@@ -9,4 +9,4 @@ This module requires that you have the following configuration on the server in 
 ```
 ## Limitations
 
-Tested to work on Ubuntu 16.04, 18.04 and 20.04
+Tested to work on Ubuntu 16.04, 18.04 and 20.04 as well as CentOS 7
