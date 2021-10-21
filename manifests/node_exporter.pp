@@ -1,5 +1,5 @@
 # @summary
-#  Class for setting up node_exporter
+#  Class for setting up node_exporter and exporting configuration to PuppetDB
 # @param version
 #   Which version of node_exporter should be used
 # @example
