@@ -6,14 +6,14 @@
 
 ### Classes
 
-* [`t7d_prometheus::node_exporter`](#t7d_prometheusnode_exporter): Class for setting up node_exporter
+* [`t7d_prometheus::node_exporter`](#t7d_prometheusnode_exporter): Class for setting up node_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::server`](#t7d_prometheusserver): Server setup for Prometheus
 
 ## Classes
 
 ### <a name="t7d_prometheusnode_exporter"></a>`t7d_prometheus::node_exporter`
 
-Class for setting up node_exporter
+Class for setting up node_exporter and exporting configuration to PuppetDB
 
 #### Examples
 
