@@ -46,7 +46,7 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2') {
   }
 
   @@concat::fragment { "node_exporter_service-${::hostname}":
-    target  => "/tmp/exporttest-${::hostname}",
+    target  => '/tmp/node-targets.yaml',
     content => "server ${::hostname} ${::ipaddress}",
     tag     => 'node_exporter_service',
   }
