@@ -1,0 +1,32 @@
+stages:
+  - sitedoc
+  - lint
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  TERM: vt100
+lint:
+  stage: lint
+  script:
+    - true puppet-lint manifests/*.pp
+sitedoc:
+  stage: sitedoc
+  script:
+    - rm -rf doc public .yardoc
+    - apk add ruby ruby-dev g++ make shadow less bash
+    - gem install puppet
+    - gem install rake
+    - gem install json
+    - gem install puppet-strings
+    - gem install puppet-lint
+    - gem install puppet-spec
+    - gem install puppet-resource_api
+    - gem install puppet-syntax
+    - gem install puppetlabs_spec_helper
+    - puppet strings generate manifests/*.pp
+    - mv doc public
+  artifacts:
+    paths:
+    - public
+    expire_in: '30 day'
+  only:
+    - master

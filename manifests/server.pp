@@ -2,9 +2,16 @@
 #   Server setup for Prometheus
 class t7d_prometheus::server {
 
+  exec {
+    'refresh_prometheus':
+      command     => '/bin/systemctl reload prometheus',
+      refreshonly => true;
+  }
+
   concat { '/etc/node-targets.yml':
     ensure_newline => true,
     owner          => 'root',
+    notify         => Exec['refresh_prometheus'],
     group          => 'root',
     mode           => '0665',
   }
