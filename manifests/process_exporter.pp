@@ -35,7 +35,7 @@ class t7d_prometheus::process_exporter (String $version = '0.7.7') {
   file {'/etc/default/process_exporter':
     ensure  => present,
     mode    => '0755',
-    require => File['/etc/systemd/system/process_exporter_service'],
+    require => File['/etc/systemd/system/process_exporter.service'],
     source  => 'puppet:///modules/t7d_prometheus/default/process_exporter'
 
   }
