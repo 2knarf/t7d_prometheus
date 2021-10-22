@@ -1,0 +1,7 @@
+process_names:
+ - name: "{{.Matches}}"
+   cmdline:
+     - 'node .+'
+ - name: "{{.Comm}}"
+   cmdline:
+     - '.+'
