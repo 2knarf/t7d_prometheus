@@ -16,7 +16,7 @@ class t7d_prometheus::process_exporter (String $version = '0.7.7') {
   file {'/usr/local/bin/process_exporter':
     ensure => file,
     mode   => '0755',
-    source => "puppet:///modules/t7d_prometheus/process-exporter-${version}.linux-amd64/proces-exporter"
+    source => "puppet:///modules/t7d_prometheus/process-exporter-${version}.linux-amd64/process-exporter"
   }
 
   user{'process_exporter':
