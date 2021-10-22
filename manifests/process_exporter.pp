@@ -42,7 +42,7 @@ class t7d_prometheus::process_exporter (String $version = '0.7.7') {
 
   # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
   exec {
-    'refresh_systemd':
+    'refresh_systemd_process_exporter':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/process_exporter.service'],
       require     => File['/etc/systemd/system/process_exporter.service'],
@@ -54,7 +54,7 @@ class t7d_prometheus::process_exporter (String $version = '0.7.7') {
     ensure    => running,
     enable    => true,
     subscribe => File['/usr/local/bin/process_exporter'],
-    require   => [Exec['refresh_systemd'],File['/usr/local/bin/process_exporter']],
+    require   => [Exec['refresh_systemd_process_exporter'],File['/usr/local/bin/process_exporter']],
     hasstatus => true,
   }
 
