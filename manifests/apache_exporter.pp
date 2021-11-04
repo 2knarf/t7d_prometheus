@@ -12,7 +12,7 @@
 #
 class t7d_prometheus::apache_exporter
 (
-  String $scrape_uri = 'http://localhost/server-status',
+  String $scrape_uri = 'http://localhost/server-status?auto',
   String $version = '0.10.1'
 )
 
