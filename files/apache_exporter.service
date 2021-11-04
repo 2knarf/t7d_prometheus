@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Apache Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/apache_exporter --scrape_uri="http://localhost/server-status?auto"
+
+[Install]
+WantedBy=multi-user.target
