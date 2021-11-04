@@ -9,6 +9,7 @@
 #   ---
 #   classes:
 #    - t7d_prometheus::apache_exporter
+#    t7d_prometheus::apache_exporter:scrape_uri: "teknograd.no/server-status?auto"
 #
 class t7d_prometheus::apache_exporter
 (

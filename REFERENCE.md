@@ -6,10 +6,58 @@
 
 ### Classes
 
+* [`t7d_prometheus::apache_exporter`](#t7d_prometheusapache_exporter): Class for setting up apache_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::node_exporter`](#t7d_prometheusnode_exporter): Class for setting up node_exporter and exporting configuration to PuppetDB
+* [`t7d_prometheus::process_exporter`](#t7d_prometheusprocess_exporter): Class for setting up process_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::server`](#t7d_prometheusserver): Server setup for Prometheus
+* [`t7d_prometheus::systemd_exporter`](#t7d_prometheussystemd_exporter): Class for setting up systemd_exporter and exporting configuration to PuppetDB
 
 ## Classes
+
+### <a name="t7d_prometheusapache_exporter"></a>`t7d_prometheus::apache_exporter`
+
+Class for setting up apache_exporter and exporting configuration to PuppetDB
+
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::apache_exporter
+```
+
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::apache_exporter
+ t7d_prometheus::apache_exporter:scrape_uri: "teknograd.no/server-status?auto"
+```
+
+#### Parameters
+
+The following parameters are available in the `t7d_prometheus::apache_exporter` class:
+
+* [`version`](#version)
+* [`scrape_uri`](#scrape_uri)
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Which version of apache_exporter should be used
+
+Default value: `'0.10.1'`
+
+##### <a name="scrape_uri"></a>`scrape_uri`
+
+Data type: `String`
+
+
+
+Default value: `'"http://localhost/server-status?auto"'`
 
 ### <a name="t7d_prometheusnode_exporter"></a>`t7d_prometheus::node_exporter`
 
@@ -46,7 +94,83 @@ Which version of node_exporter should be used
 
 Default value: `'1.1.2'`
 
+### <a name="t7d_prometheusprocess_exporter"></a>`t7d_prometheus::process_exporter`
+
+Class for setting up process_exporter and exporting configuration to PuppetDB
+
+* **See also**
+  * https://github.com/ncabatoff/process-exporter
+
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::process_exporter
+```
+
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::process_exporter
+```
+
+#### Parameters
+
+The following parameters are available in the `t7d_prometheus::process_exporter` class:
+
+* [`version`](#version)
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Which version of process_exporter should be used
+
+Default value: `'0.7.7'`
+
 ### <a name="t7d_prometheusserver"></a>`t7d_prometheus::server`
 
 Server setup for Prometheus
+
+### <a name="t7d_prometheussystemd_exporter"></a>`t7d_prometheus::systemd_exporter`
+
+Class for setting up systemd_exporter and exporting configuration to PuppetDB
+
+* **See also**
+  * https://github.com/povilasv/systemd_exporter
+
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::systemd_exporter
+```
+
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::systemd_exporter
+```
+
+#### Parameters
+
+The following parameters are available in the `t7d_prometheus::systemd_exporter` class:
+
+* [`version`](#version)
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Which version of systemd_exporter should be used
+
+Default value: `'0.4.0'`
 
