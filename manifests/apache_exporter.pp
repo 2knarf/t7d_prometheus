@@ -52,7 +52,7 @@ class t7d_prometheus::apache_exporter (String $version = '0.10.1') {
 
   #  This should end up like this on the prom server:  - targets: ['apt-web01.teknograd.no:9113']
   @@concat::fragment { "apache_exporter_service-${::fqdn}":
-    target  => '/etc/node-targets.yml',
+    target  => '/etc/apache-targets.yml',
     content => "- targets: ['${::fqdn}:9117']",
     tag     => 'apache_exporter_service',
   }
