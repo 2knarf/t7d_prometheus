@@ -22,6 +22,13 @@ class t7d_prometheus::server {
     group          => 'root',
     mode           => '0665',
   }
+  concat { '/etc/apache-targets.yml':
+    ensure_newline => true,
+    owner          => 'root',
+    notify         => Exec['refresh_prometheus'],
+    group          => 'root',
+    mode           => '0665',
+  }
   #  concat { '/etc/systemd-targets.yml':
   #  ensure_newline => true,
   #  owner          => 'root',
@@ -32,5 +39,6 @@ class t7d_prometheus::server {
 
   Concat::Fragment <<| tag == 'node_exporter_service' |>>
   Concat::Fragment <<| tag == 'process_exporter_service' |>>
+  Concat::Fragment <<| tag == 'apache_exporter_service' |>>
   #  Concat::Fragment <<| tag == 'systemd_exporter_service' |>>
 }
