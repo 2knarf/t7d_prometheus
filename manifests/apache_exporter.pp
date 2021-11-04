@@ -10,7 +10,13 @@
 #   classes:
 #    - t7d_prometheus::apache_exporter
 #
-class t7d_prometheus::apache_exporter (String $version = '0.10.1') {
+class t7d_prometheus::apache_exporter
+(
+  String $scrape_uri = 'http://localhost/server-status',
+  String $version = '0.10.1'
+)
+
+  {
 
   file {'/usr/local/bin/apache_exporter':
     ensure => file,
@@ -26,9 +32,10 @@ class t7d_prometheus::apache_exporter (String $version = '0.10.1') {
   }
 
   file {'/etc/systemd/system/apache_exporter.service':
-    ensure => present,
-    mode   => '0755',
-    source => 'puppet:///modules/t7d_prometheus/apache_exporter.service'
+    ensure  => present,
+    mode    => '0755',
+    content => epp('t7d_prometheus/apache_exporter.service.epp'),
+    #source => 'puppet:///modules/t7d_prometheus/apache_exporter.service'
 
   }
 

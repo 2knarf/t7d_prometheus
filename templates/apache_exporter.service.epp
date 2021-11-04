@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus apache Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=apache_exporter
+Group=apache_exporter
+Type=simple
+ExecStart=/usr/local/bin/apache_exporter --scrape_uri=<%= $t7d_prometheus::apache_exporter::scrape_uri-%>
+
+[Install]
+WantedBy=multi-user.target
