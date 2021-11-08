@@ -2,6 +2,8 @@
 #  Class for setting up apache_exporter and exporting configuration to PuppetDB
 # @param version
 #   Which version of apache_exporter should be used
+# @param scrape_uri
+#   What url to scrape status from
 # @example
 #   include t7d_prometheus::apache_exporter
 # @example

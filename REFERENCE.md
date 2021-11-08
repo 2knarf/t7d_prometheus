@@ -7,6 +7,7 @@
 ### Classes
 
 * [`t7d_prometheus::apache_exporter`](#t7d_prometheusapache_exporter): Class for setting up apache_exporter and exporting configuration to PuppetDB
+* [`t7d_prometheus::nginx_exporter`](#t7d_prometheusnginx_exporter): Class for setting up nginx_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::node_exporter`](#t7d_prometheusnode_exporter): Class for setting up node_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::process_exporter`](#t7d_prometheusprocess_exporter): Class for setting up process_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::server`](#t7d_prometheusserver): Server setup for Prometheus
@@ -55,9 +56,54 @@ Default value: `'0.10.1'`
 
 Data type: `String`
 
-
+What url to scrape status from
 
 Default value: `'"http://localhost/server-status?auto"'`
+
+### <a name="t7d_prometheusnginx_exporter"></a>`t7d_prometheus::nginx_exporter`
+
+Class for setting up nginx_exporter and exporting configuration to PuppetDB
+
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::nginx_exporter
+```
+
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::nginx_exporter
+ t7d_prometheus::nginx_exporter:scrape_uri: "teknograd.no/server-status?auto"
+```
+
+#### Parameters
+
+The following parameters are available in the `t7d_prometheus::nginx_exporter` class:
+
+* [`version`](#version)
+* [`scrape_uri`](#scrape_uri)
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Which version of nginx_exporter should be used
+
+Default value: `'0.7.7'`
+
+##### <a name="scrape_uri"></a>`scrape_uri`
+
+Data type: `String`
+
+What URL is nginx stub status located
+
+Default value: `'"http://localhost/stub_status"'`
 
 ### <a name="t7d_prometheusnode_exporter"></a>`t7d_prometheus::node_exporter`
 

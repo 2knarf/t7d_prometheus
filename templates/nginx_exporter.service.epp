@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus nginx Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=nginx_exporter
+Group=nginx_exporter
+Type=simple
+ExecStart=/usr/local/bin/nginx_exporter --scrape_uri=<%= $t7d_prometheus::nginx_exporter::scrape_uri-%>
+
+[Install]
+WantedBy=multi-user.target
