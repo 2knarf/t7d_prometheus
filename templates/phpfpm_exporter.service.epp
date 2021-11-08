@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus phpfpm Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=www-data
+Group=www-data
+Type=simple
+#ExecStart=/usr/local/bin/php-fpm_exporter server --phpfpm.scrape-uri "unix:///var/run/php/moller-php7.4-fpm.sock;/server-status-phpfpm74-moller" --phpfpm.scrape-uri "unix:///var/run/php/nmh-php7.4-fpm.sock;/server-status-phpfpm74-nmh"
+ExecStart=/usr/local/bin/phpfpm_exporter server <% scrape_sock.each do |sock| -%>  --phpfpm.scrape-uri "unix:///<%= sock %>";/status <% end -%>
+
+[Install]
+WantedBy=multi-user.target
