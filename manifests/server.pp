@@ -41,5 +41,6 @@ class t7d_prometheus::server {
   Concat::Fragment <<| tag == 'process_exporter_service' |>>
   Concat::Fragment <<| tag == 'apache_exporter_service' |>>
   Concat::Fragment <<| tag == 'nginx_exporter_service' |>>
+  Concat::Fragment <<| tag == 'varnish_exporter_service' |>>
   #  Concat::Fragment <<| tag == 'systemd_exporter_service' |>>
 }
