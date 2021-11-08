@@ -44,7 +44,7 @@ class t7d_prometheus::nginx_exporter
 
   # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
   exec {
-    'refresh_systemd':
+    'refresh_systemd_nginxexporter':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/nginx_exporter.service'],
       require     => File['/etc/systemd/system/nginx_exporter.service'],

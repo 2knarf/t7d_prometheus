@@ -41,7 +41,7 @@ class t7d_prometheus::varnish_exporter
 
   # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
   exec {
-    'refresh_systemd':
+    'refresh_systemd_varnishexporter':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/varnish_exporter.service'],
       require     => File['/etc/systemd/system/varnish_exporter.service'],
