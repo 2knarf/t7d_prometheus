@@ -4,8 +4,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=prometheus_exporter
-Group=vcache
+User=varnish_exporter
+Group=varnish
 Type=simple
 ExecStart=/usr/local/bin/varnish_exporter
 
