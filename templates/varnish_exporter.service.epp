@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus varnish Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus_exporter
+Group=varnish
+Type=simple
+ExecStart=/usr/local/bin/varnish_exporter
+
+[Install]
+WantedBy=multi-user.target
