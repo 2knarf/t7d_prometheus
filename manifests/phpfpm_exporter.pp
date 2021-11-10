@@ -18,11 +18,12 @@
 #   --phpfpm.scrape-uri "unix:///var/run/php/moller-php7.4-fpm.sock;/server-status-phpfpm74-moller" --phpfpm.scrape-uri "unix:///var/run/php/nmh-php7.4-fpm.sock;/server-status-phpfpm74-nmh"
 class t7d_prometheus::phpfpm_exporter
 (
-  $scrape_sock = ['a','b'],
+  $scrape_sock = hiera(t7d_prometheus::phpfpm_exporter::scrape_sock),
   String $version = '2.0.3'
 )
 
   {
+  create_resources(t7d_prometheus::phpfpm_exporter::scrape_sock, $scrape_sock)
 
   file {'/usr/local/bin/phpfpm_exporter':
     ensure => file,
