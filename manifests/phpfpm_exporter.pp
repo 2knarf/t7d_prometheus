@@ -23,7 +23,6 @@ class t7d_prometheus::phpfpm_exporter
 )
 
   {
-  create_resources(t7d_prometheus::phpfpm_exporter::scrape_sock, $scrape_sock)
 
   file {'/usr/local/bin/phpfpm_exporter':
     ensure => file,
