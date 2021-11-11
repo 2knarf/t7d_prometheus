@@ -8,9 +8,8 @@ User=www-data
 Group=www-data
 Type=simple
 #ExecStart=/usr/local/bin/php-fpm_exporter server --phpfpm.scrape-uri "unix:///var/run/php/moller-php7.4-fpm.sock;/server-status-phpfpm74-moller" --phpfpm.scrape-uri "unix:///var/run/php/nmh-php7.4-fpm.sock;/server-status-phpfpm74-nmh"
-#ExecStart=/usr/local/bin/phpfpm_exporter server <% lookup('scrape_sock').each | $scrape_sock | { -%> <%= $sock -%> <% } %>
-<% $t7d_prometheus::phpfpm_exporter::scrape_sock.each |$server| {-%> server <%= $server %>ect<% } %>
-<%  -%>
+#ExecStart=/usr/local/bin/phpfpm_exporter server <--% lookup('scrape_sock').each | $scrape_sock | { -%> <--%= $sock -%> <--% } %->
+<% $t7d_prometheus::phpfpm_exporter::scrape_sock.each |$scrape_sock| {-%> scrape_sock <%= $scrape_sock %>ect<% } %> <%  -%>
 
 [Install]
 WantedBy=multi-user.target
