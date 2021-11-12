@@ -22,6 +22,13 @@ class t7d_prometheus::server {
     group          => 'root',
     mode           => '0665',
   }
+  concat { '/etc/varnish-targets.yml':
+    ensure_newline => true,
+    owner          => 'root',
+    notify         => Exec['refresh_prometheus'],
+    group          => 'root',
+    mode           => '0665',
+  }
   concat { '/etc/apache-targets.yml':
     ensure_newline => true,
     owner          => 'root',
