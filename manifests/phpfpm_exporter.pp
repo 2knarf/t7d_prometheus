@@ -59,7 +59,7 @@ class t7d_prometheus::phpfpm_exporter
     ensure    => running,
     enable    => true,
     subscribe => File['/usr/local/bin/phpfpm_exporter'],
-    require   => [Exec['refresh_systemd'],File['/usr/local/bin/phpfpm_exporter']],
+    require   => [Exec['refresh_systemd_phpfpmexporter'],File['/usr/local/bin/phpfpm_exporter']],
     hasstatus => true,
   }
 
