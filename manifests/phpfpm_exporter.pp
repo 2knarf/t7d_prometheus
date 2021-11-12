@@ -18,7 +18,7 @@
 #   --phpfpm.scrape-uri "unix:///var/run/php/moller-php7.4-fpm.sock;/server-status-phpfpm74-moller" --phpfpm.scrape-uri "unix:///var/run/php/nmh-php7.4-fpm.sock;/server-status-phpfpm74-nmh"
 class t7d_prometheus::phpfpm_exporter
 (
-  Array[String] $scrape_sock = ['foo'],
+  Array[String] $scrape_sock = ['foo','bar'],
   String $version = '2.0.3'
 )
 
