@@ -5,14 +5,13 @@
 # @param scrape_sock
 #   What URL is phpfpm stub status located
 # @example
-#   include t7d_prometheus::phpfpm_exporter
-# @example
 #   File: data/nodes/puppetdevclient03.teknograd.no.yaml
 #   ---
 #   classes:
-#    - t7d_prometheus::phpfpm_exporter
-#    t7d_prometheus::phpfpm_exporter:scrape_sock: "teknograd.no/server-status?auto"
-#
+#     - t7d_prometheus::phpfpm_exporter
+#   t7d_prometheus::phpfpm_exporter::scrape_sock:
+#     - 'unix:///var/run/php/www1.sock;/status'
+#     - 'unix:///var/run/php/www2.sock;/status'
 # @note
 #   Should create something like this:
 #   --phpfpm.scrape-uri "unix:///var/run/php/moller-php7.4-fpm.sock;/server-status-phpfpm74-moller" --phpfpm.scrape-uri "unix:///var/run/php/nmh-php7.4-fpm.sock;/server-status-phpfpm74-nmh"
