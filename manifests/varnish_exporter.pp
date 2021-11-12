@@ -60,7 +60,7 @@ class t7d_prometheus::varnish_exporter
   #  This should end up like this on the prom server:  - targets: ['apt-web01.teknograd.no:9113']
   @@concat::fragment { "varnish_exporter_service-${::fqdn}":
     target  => '/etc/varnish-targets.yml',
-    content => "- targets: ['${::fqdn}:9113']",
+    content => "- targets: ['${::fqdn}:9131']",
     tag     => 'varnish_exporter_service',
   }
 
