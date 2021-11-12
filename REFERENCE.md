@@ -285,7 +285,6 @@ File: data/nodes/puppetdevclient03.teknograd.no.yaml
 ---
 classes:
  - t7d_prometheus::varnish_exporter
- t7d_prometheus::varnish_exporter:scrape_uri: "teknograd.no/server-status?auto"
 ```
 
 #### Parameters
