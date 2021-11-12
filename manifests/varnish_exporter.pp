@@ -53,7 +53,7 @@ class t7d_prometheus::varnish_exporter
     ensure    => running,
     enable    => true,
     subscribe => File['/usr/local/bin/varnish_exporter'],
-    require   => [Exec['refresh_systemd'],File['/usr/local/bin/varnish_exporter']],
+    require   => [Exec['refresh_systemd_varnishexporter'],File['/usr/local/bin/varnish_exporter']],
     hasstatus => true,
   }
 
