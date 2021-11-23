@@ -15,7 +15,7 @@
 #
 class t7d_prometheus::nginx_exporter
 (
-  String $scrape_uri = '"http://localhost/stub_status"',
+  String $scrape_uri = '"http://localhost/server-status"',
   String $version = '0.9.0'
 )
 
