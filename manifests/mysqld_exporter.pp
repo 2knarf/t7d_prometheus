@@ -2,6 +2,10 @@
 #  Class for setting up mysqld_exporter and exporting configuration to PuppetDB
 # @param version
 #   Which version of mysqld_exporter should be used
+# @param user
+#   Which user it should connect to mysqld as
+# @param pass
+#   Which password it should use to connect to mysqld
 # @example
 #   include t7d_prometheus::mysqld_exporter
 # @example
@@ -10,10 +14,13 @@
 #   classes:
 #    - t7d_prometheus::mysqld_exporter
 #    t7d_prometheus::mysqld_exporter:version: "0.13.0"
+#    t7d_prometheus::mysqld_exporter::user: "stats"
+#    t7d_prometheus::mysqld_exporter::pass: "statspass"
 #
 class t7d_prometheus::mysqld_exporter
 (
-  String $scrape_uri = '"http://localhost/server-status"',
+  String $user = 'user',
+  String $pass = 'pass',
   String $version = '0.13.0'
 )
 
@@ -35,9 +42,15 @@ class t7d_prometheus::mysqld_exporter
   file {'/etc/systemd/system/mysqld_exporter.service':
     ensure  => present,
     mode    => '0755',
-    content => epp('t7d_prometheus/mysqld_exporter.service.epp'),
-    #source => 'puppet:///modules/t7d_prometheus/mysqld_exporter.service'
+    require => File['/etc/.mysqld_exporter.cnf'],
+    #content => epp('t7d_prometheus/mysqld_exporter.service.epp'),
+    source  => 'puppet:///modules/t7d_prometheus/mysqld_exporter.service'
+  }
 
+  file {'/etc/.mysqld_exporter.cnf':
+    ensure  => present,
+    mode    => '0700',
+    content => epp('t7d_prometheus/mysqld_exporter_default.epp'),
   }
 
   # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
