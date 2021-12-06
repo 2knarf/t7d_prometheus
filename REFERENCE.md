@@ -7,6 +7,7 @@
 ### Classes
 
 * [`t7d_prometheus::apache_exporter`](#t7d_prometheusapache_exporter): Class for setting up apache_exporter and exporting configuration to PuppetDB
+* [`t7d_prometheus::mysqld_exporter`](#t7d_prometheusmysqld_exporter): Class for setting up mysqld_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::nginx_exporter`](#t7d_prometheusnginx_exporter): Class for setting up nginx_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::node_exporter`](#t7d_prometheusnode_exporter): Class for setting up node_exporter and exporting configuration to PuppetDB
 * [`t7d_prometheus::phpfpm_exporter`](#t7d_prometheusphpfpm_exporter): Class for setting up phpfpm_exporter and exporting configuration to PuppetDB
@@ -62,6 +63,62 @@ What url to scrape status from
 
 Default value: `'"http://localhost/server-status?auto"'`
 
+### <a name="t7d_prometheusmysqld_exporter"></a>`t7d_prometheus::mysqld_exporter`
+
+Class for setting up mysqld_exporter and exporting configuration to PuppetDB
+
+#### Examples
+
+##### 
+
+```puppet
+include t7d_prometheus::mysqld_exporter
+```
+
+##### 
+
+```puppet
+File: data/nodes/puppetdevclient03.teknograd.no.yaml
+---
+classes:
+ - t7d_prometheus::mysqld_exporter
+ t7d_prometheus::mysqld_exporter:version: "0.13.0"
+ t7d_prometheus::mysqld_exporter::user: "stats"
+ t7d_prometheus::mysqld_exporter::pass: "statspass"
+```
+
+#### Parameters
+
+The following parameters are available in the `t7d_prometheus::mysqld_exporter` class:
+
+* [`version`](#version)
+* [`user`](#user)
+* [`pass`](#pass)
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Which version of mysqld_exporter should be used
+
+Default value: `'0.13.0'`
+
+##### <a name="user"></a>`user`
+
+Data type: `String`
+
+Which user it should connect to mysqld as
+
+Default value: `'user'`
+
+##### <a name="pass"></a>`pass`
+
+Data type: `String`
+
+Which password it should use to connect to mysqld
+
+Default value: `'pass'`
+
 ### <a name="t7d_prometheusnginx_exporter"></a>`t7d_prometheus::nginx_exporter`
 
 Class for setting up nginx_exporter and exporting configuration to PuppetDB
@@ -105,7 +162,7 @@ Data type: `String`
 
 What URL is nginx stub status located
 
-Default value: `'"http://localhost/stub_status"'`
+Default value: `'"http://localhost/server-status"'`
 
 ### <a name="t7d_prometheusnode_exporter"></a>`t7d_prometheus::node_exporter`
 
