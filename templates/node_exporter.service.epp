@@ -1,3 +1,5 @@
+<%- | Boolean $textfile
+| -%>
 [Unit]
 Description=Node Exporter
 After=network.target
