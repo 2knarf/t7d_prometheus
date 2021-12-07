@@ -1,5 +1,3 @@
-<%- | Boolean $textfile
-| -%>
 [Unit]
 Description=Node Exporter
 After=network.target
@@ -8,7 +6,7 @@ After=network.target
 User=node_exporter
 Group=node_exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter <% if $textfile == true { -%> TEST <% } -%>
+ExecStart=/usr/local/bin/node_exporter <% if $textfile { -%> TEST <% } -%>
 
 [Install]
 WantedBy=multi-user.target
