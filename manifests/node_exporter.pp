@@ -32,8 +32,8 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfil
   }
 
   file {'/etc/systemd/system/node_exporter.service':
-    ensure => present,
-    mode   => '0755',
+    ensure  => present,
+    mode    => '0755',
     content => epp('t7d_prometheus/node_exporter.service.epp'),
 
   }
