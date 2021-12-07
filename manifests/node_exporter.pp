@@ -10,7 +10,7 @@
 #   classes:
 #    - t7d_prometheus::node_exporter
 #
-class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfile = false) {
+class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfile) {
   #--collector.textfile.directory="/var/lib/prometheus/node-exporter"
   if $textfile {
     file {'/var/lib/prometheus/node-exporter':
