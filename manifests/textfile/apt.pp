@@ -21,7 +21,7 @@ class t7d_prometheus::textfile::apt {
     'refresh_systemd_apt_timer':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/prometheus-node-exporter-apt.timer','prometheus-node-exporter-apt.service'],
-      require     => File['/etc/systemd/system/prometheus-node-exporter-apt.service','prometheus-node-exporter-apt.service'],
+      require     => File['/etc/systemd/system/prometheus-node-exporter-apt.timer','prometheus-node-exporter-apt.service'],
       refreshonly => true;
   }
 
