@@ -1,5 +1,5 @@
 #Install the apt status text exporter
-class t7d_prometheus::node_exporter::textfile::apt {
+class t7d_prometheus::textfile::apt {
 
   file {'/etc/systemd/system/prometheus-node-exporter-apt.service':
     ensure => file,

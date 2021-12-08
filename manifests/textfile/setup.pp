@@ -1,5 +1,5 @@
 #Setup the base for textfile exporter
-class t7d_prometheus::node_exporter::textfile::setup {
+class t7d_prometheus::textfile::setup {
 
     file {'/var/lib/prometheus/node-exporter':
       ensure  => directory,
