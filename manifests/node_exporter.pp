@@ -20,6 +20,14 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfil
     file {'/var/lib/prometheus':
       ensure => directory,
     }
+    package { 'moreutils':
+      ensure => 'present'
+    }
+    file {'/usr/local/bin/node_exporter':
+      ensure => file,
+      mode   => '0755',
+      source => "puppet:///modules/t7d_prometheus/node_exporter-${version}.linux-amd64/node_exporter"
+    }
   }
 
   file {'/usr/local/bin/node_exporter':
