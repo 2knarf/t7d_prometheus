@@ -13,7 +13,7 @@
 class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfile = false) {
   #--collector.textfile.directory="/var/lib/prometheus/node-exporter"
   if $textfile {
-    include t7d_prometheus::node_exporter::textfile::setup
+    include t7d_prometheus::textfile::setup
   }
 
   file {'/usr/local/bin/node_exporter':
