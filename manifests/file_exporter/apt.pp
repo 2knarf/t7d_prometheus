@@ -1,9 +1,35 @@
 #Install the apt status text exporter
 class t7d_prometheus::node_exporter::textfile::apt {
 
-    file {'/usr/local/bin/node_exporter_text_apt':
-      ensure => file,
-      mode   => '0755',
-      source => 'puppet:///modules/t7d_prometheus/node-exporter-textfile-collector-scripts/apt.sh'
-    }
+  file {'/etc/systemd/system/prometheus-node-exporter-apt.service':
+    ensure => file,
+    mode   => '0755',
+    source => 'puppet:///modules/t7d_prometheus/prometheus-node-exporter-apt.service'
+  }
+  file {'/etc/systemd/system/prometheus-node-exporter-apt.timer':
+    ensure => file,
+    mode   => '0755',
+    source => 'puppet:///modules/t7d_prometheus/prometheus-node-exporter-apt.timer'
+  }
+  file {'/usr/share/prometheus-node-exporter-collectors/apt.sh':
+    ensure => file,
+    mode   => '0755',
+    source => 'puppet:///modules/t7d_prometheus/node-exporter-textfile-collector-scripts/apt.sh'
+  }
+
+  exec {
+    'refresh_systemd_apt_timer':
+      command     => '/bin/systemctl daemon-reload',
+      subscribe   => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+      require     => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+      refreshonly => true;
+  }
+
+  service{ 'node_exporter':
+    ensure    => running,
+    enable    => true,
+    subscribe => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+    require   => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+    hasstatus => true,
+  }
 }
