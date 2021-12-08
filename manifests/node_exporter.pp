@@ -11,7 +11,7 @@
 #    - t7d_prometheus::node_exporter
 #
 class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfile = false) {
-  #--collector.textfile.directory="/var/lib/prometheus/node-exporter"
+
   if $textfile {
     include t7d_prometheus::textfile::setup
   }
@@ -49,7 +49,7 @@ class t7d_prometheus::node_exporter (String $version = '1.1.2', Boolean $textfil
   service{ 'node_exporter':
     ensure    => running,
     enable    => true,
-    subscribe => File['/usr/local/bin/node_exporter'],
+    subscribe => File['/usr/local/bin/node_exporter','/etc/systemd/system/node_exporter.service'],
     require   => [Exec['refresh_systemd'],File['/usr/local/bin/node_exporter']],
     hasstatus => true,
   }
