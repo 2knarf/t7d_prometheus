@@ -20,16 +20,16 @@ class t7d_prometheus::textfile::apt {
   exec {
     'refresh_systemd_apt_timer':
       command     => '/bin/systemctl daemon-reload',
-      subscribe   => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
-      require     => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+      subscribe   => File['/etc/systemd/system/prometheus-node-exporter-apt.timer','prometheus-node-exporter-apt.service'],
+      require     => File['/etc/systemd/system/prometheus-node-exporter-apt.service','prometheus-node-exporter-apt.service'],
       refreshonly => true;
   }
 
-  service{ 'node_exporter':
+  service{ 'prometheus-node-exporter-apt.timer':
     ensure    => running,
     enable    => true,
-    subscribe => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
-    require   => File['/etc/systemd/system/prometheus-node-exporter-timer.service','prometheus-node-exporter-apt.service'],
+    subscribe => File['/etc/systemd/system/prometheus-node-exporter-apt.timer','prometheus-node-exporter-apt.service'],
+    require   => File['/etc/systemd/system/prometheus-node-exporter-apt.timer','prometheus-node-exporter-apt.service'],
     hasstatus => true,
   }
 }
