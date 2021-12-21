@@ -1,3 +1,4 @@
 [client]
 user=<%= $t7d_prometheus::mysqld_exporter::user-%>
+
 password=<%= $t7d_prometheus::mysqld_exporter::pass-%>
