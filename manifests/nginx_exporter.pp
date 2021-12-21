@@ -11,7 +11,7 @@
 #   ---
 #   classes:
 #    - t7d_prometheus::nginx_exporter
-#    t7d_prometheus::nginx_exporter:scrape_uri: "teknograd.no/server-status?auto"
+#    t7d_prometheus::nginx_exporter::scrape_uri: "localhost/nginx_status"
 #
 class t7d_prometheus::nginx_exporter
 (
