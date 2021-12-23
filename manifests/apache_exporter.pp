@@ -44,7 +44,7 @@ class t7d_prometheus::apache_exporter
 
   # sudo systemctl daemon-reload is required to pick up changes in the systemd directory
   exec {
-    'refresh_systemd':
+    'refresh_systemd_apache':
       command     => '/bin/systemctl daemon-reload',
       subscribe   => File['/etc/systemd/system/apache_exporter.service'],
       require     => File['/etc/systemd/system/apache_exporter.service'],
@@ -56,7 +56,7 @@ class t7d_prometheus::apache_exporter
     ensure    => running,
     enable    => true,
     subscribe => File['/usr/local/bin/apache_exporter'],
-    require   => [Exec['refresh_systemd'],File['/usr/local/bin/apache_exporter']],
+    require   => [Exec['refresh_systemd_apache'],File['/usr/local/bin/apache_exporter']],
     hasstatus => true,
   }
 
