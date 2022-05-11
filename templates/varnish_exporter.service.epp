@@ -8,6 +8,8 @@ User=varnish_exporter
 Group=varnish
 Type=simple
 ExecStart=/usr/local/bin/varnish_exporter
+StandardOutput=null
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
