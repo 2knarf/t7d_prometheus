@@ -9,7 +9,7 @@ Group=varnish
 Type=simple
 ExecStart=/usr/local/bin/varnish_exporter
 StandardOutput=null
-StandardError=journal
+StandardError=null
 
 [Install]
 WantedBy=multi-user.target
